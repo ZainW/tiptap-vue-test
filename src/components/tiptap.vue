@@ -4,12 +4,13 @@ import StarterKit from '@tiptap/starter-kit'
 import TextAlign from '@tiptap/extension-text-align'
 import Link from '@tiptap/extension-link'
 import Image from '@tiptap/extension-image'
+import AButton  from './AButton.vue'
 
 const editorRef = useEditor({
-  content: '<p>I’m running Tiptap with Vue.js. 🎉</p>',
+  content: '<h1 style="text-align: center">I’m running Tiptap with Vue.js. 🎉</h1><p style="text-align: center"><a target="_blank" rel="noopener noreferrer" href="https://google.ca">link</a></p><p style="text-align: center"></p><p>Left text </p><p></p><p style="text-align: right">right text</p><p style="text-align: center"><img src="https://www.google.ca/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"></p>',
   editorProps: {
     attributes: {
-      class: 'prose dark:prose-invert prose-sm sm:prose-base lg:prose-lg xl:prose-2xl m-5 focus:outline-none',
+      class: 'prose dark:prose-invert prose-sm sm:prose-base lg:prose-lg xl:prose-2xl m-5 focus:outline-none border-2 border-gray-300 rounded-md w-full max-w-98dvw',
     }
   },
   extensions: [
@@ -72,92 +73,201 @@ function setLink() {
 
 <template>
   <div>
-    <div v-if="editorRef" class="flex gap-4 mb-4">
-      <button :disabled="!editorRef.can().chain().focus().toggleBold().run()" :class="{ 'is-active': editorRef.isActive('bold') }" @click="editorRef.chain().focus().toggleBold().run()">
+    <div
+      v-if="editorRef"
+      class="flex justify-center items-center gap-4 mb-4"
+    >
+      <AButton
+        :disabled="!editorRef.can().chain().focus().toggleBold().run()"
+        :class="{ 'is-active': editorRef.isActive('bold') }"
+        @click="editorRef.chain().focus().toggleBold().run()"
+      >
         bold
-      </button>
-      <button :disabled="!editorRef.can().chain().focus().toggleItalic().run()" :class="{ 'is-active': editorRef.isActive('italic') }" @click="editorRef.chain().focus().toggleItalic().run()">
+      </AButton>
+      <AButton
+        :disabled="!editorRef.can().chain().focus().toggleItalic().run()"
+        :class="{ 'is-active': editorRef.isActive('italic') }"
+        @click="editorRef.chain().focus().toggleItalic().run()"
+      >
         italic
-      </button>
-      <button :disabled="!editorRef.can().chain().focus().toggleStrike().run()" :class="{ 'is-active': editorRef.isActive('strike') }" @click="editorRef.chain().focus().toggleStrike().run()">
+      </AButton>
+      <AButton
+        :disabled="!editorRef.can().chain().focus().toggleStrike().run()"
+        :class="{ 'is-active': editorRef.isActive('strike') }"
+        @click="editorRef.chain().focus().toggleStrike().run()"
+      >
         strike
-      </button>
-      <button :disabled="!editorRef.can().chain().focus().toggleCode().run()" :class="{ 'is-active': editorRef.isActive('code') }" @click="editorRef.chain().focus().toggleCode().run()">
+      </AButton>
+      <AButton
+        :disabled="!editorRef.can().chain().focus().toggleCode().run()"
+        :class="{ 'is-active': editorRef.isActive('code') }"
+        @click="editorRef.chain().focus().toggleCode().run()"
+      >
         code
-      </button>
-      <button @click="editorRef.chain().focus().unsetAllMarks().run()">
+      </AButton>
+      <AButton @click="editorRef.chain().focus().unsetAllMarks().run()">
         clear marks
-      </button>
-      <button @click="editorRef.chain().focus().clearNodes().run()">
+      </AButton>
+      <AButton @click="editorRef.chain().focus().clearNodes().run()">
         clear nodes
-      </button>
-      <button type="button" :class="{ 'is-active': editorRef.isActive('paragraph') }" @click="editorRef.chain().focus().setParagraph().run()">
+      </AButton>
+      <AButton
+
+        :class="{ 'is-active': editorRef.isActive('paragraph') }"
+        @click="editorRef.chain().focus().setParagraph().run()"
+      >
         paragraph
-      </button>
-      <button type="button" :class="{ 'is-active': editorRef.isActive('heading', { level: 1 }) }" @click="editorRef.chain().focus().toggleHeading({ level: 1 }).run()">
+      </AButton>
+      <AButton
+
+        :class="{ 'is-active': editorRef.isActive('heading', { level: 1 }) }"
+        @click="editorRef.chain().focus().toggleHeading({ level: 1 }).run()"
+      >
         h1
-      </button>
-      <button type="button" :class="{ 'is-active': editorRef.isActive('heading', { level: 2 }) }" @click="editorRef.chain().focus().toggleHeading({ level: 2 }).run()">
+      </AButton>
+      <AButton
+
+        :class="{ 'is-active': editorRef.isActive('heading', { level: 2 }) }"
+        @click="editorRef.chain().focus().toggleHeading({ level: 2 }).run()"
+      >
         h2
-      </button>
-      <button type="button" :class="{ 'is-active': editorRef.isActive('heading', { level: 3 }) }" @click="editorRef.chain().focus().toggleHeading({ level: 3 }).run()">
+      </AButton>
+      <AButton
+
+        :class="{ 'is-active': editorRef.isActive('heading', { level: 3 }) }"
+        @click="editorRef.chain().focus().toggleHeading({ level: 3 }).run()"
+      >
         h3
-      </button>
-      <button type="button" :class="{ 'is-active': editorRef.isActive('heading', { level: 4 }) }" @click="editorRef.chain().focus().toggleHeading({ level: 4 }).run()">
+      </AButton>
+      <AButton
+
+        :class="{ 'is-active': editorRef.isActive('heading', { level: 4 }) }"
+        @click="editorRef.chain().focus().toggleHeading({ level: 4 }).run()"
+      >
         h4
-      </button>
-      <button type="button" :class="{ 'is-active': editorRef.isActive('heading', { level: 5 }) }" @click="editorRef.chain().focus().toggleHeading({ level: 5 }).run()">
+      </AButton>
+      <AButton
+
+        :class="{ 'is-active': editorRef.isActive('heading', { level: 5 }) }"
+        @click="editorRef.chain().focus().toggleHeading({ level: 5 }).run()"
+      >
         h5
-      </button>
-      <button type="button" :class="{ 'is-active': editorRef.isActive('heading', { level: 6 }) }" @click="editorRef.chain().focus().toggleHeading({ level: 6 }).run()">
+      </AButton>
+      <AButton
+
+        :class="{ 'is-active': editorRef.isActive('heading', { level: 6 }) }"
+        @click="editorRef.chain().focus().toggleHeading({ level: 6 }).run()"
+      >
         h6
-      </button>
-      <button type="button" :class="{ 'is-active': editorRef.isActive('bulletList') }" @click="editorRef.chain().focus().toggleBulletList().run()">
+      </AButton>
+      <AButton
+
+        :class="{ 'is-active': editorRef.isActive('bulletList') }"
+        @click="editorRef.chain().focus().toggleBulletList().run()"
+      >
         bullet list
-      </button>
-      <button type="button" :class="{ 'is-active': editorRef.isActive('orderedList') }" @click="editorRef.chain().focus().toggleOrderedList().run()">
+      </AButton>
+      <AButton
+
+        :class="{ 'is-active': editorRef.isActive('orderedList') }"
+        @click="editorRef.chain().focus().toggleOrderedList().run()"
+      >
         ordered list
-      </button>
-      <button type="button" :class="{ 'is-active': editorRef.isActive('codeBlock') }" @click="editorRef.chain().focus().toggleCodeBlock().run()">
+      </AButton>
+      <AButton
+
+        :class="{ 'is-active': editorRef.isActive('codeBlock') }"
+        @click="editorRef.chain().focus().toggleCodeBlock().run()"
+      >
         code block
-      </button>
-      <button type="button" :class="{ 'is-active': editorRef.isActive('blockquote') }" @click="editorRef.chain().focus().toggleBlockquote().run()">
+      </AButton>
+      <AButton
+
+        :class="{ 'is-active': editorRef.isActive('blockquote') }"
+        @click="editorRef.chain().focus().toggleBlockquote().run()"
+      >
         blockquote
-      </button>
-      <button type="button" @click="editorRef.chain().focus().setHorizontalRule().run()">
+      </AButton>
+      <AButton
+
+        @click="editorRef.chain().focus().setHorizontalRule().run()"
+      >
         horizontal rule
-      </button>
-      <button type="button" @click="editorRef.chain().focus().setHardBreak().run()">
+      </AButton>
+      <AButton
+
+        @click="editorRef.chain().focus().setHardBreak().run()"
+      >
         hard break
-      </button>
-      <button type="button" :disabled="!editorRef.can().chain().focus().undo().run()" @click="editorRef.chain().focus().undo().run()">
+      </AButton>
+      <AButton
+
+        :disabled="!editorRef.can().chain().focus().undo().run()"
+        @click="editorRef.chain().focus().undo().run()"
+      >
         undo
-      </button>
-      <button type="button" :disabled="!editorRef.can().chain().focus().redo().run()" @click="editorRef.chain().focus().redo().run()">
+      </AButton>
+      <AButton
+
+        :disabled="!editorRef.can().chain().focus().redo().run()"
+        @click="editorRef.chain().focus().redo().run()"
+      >
         redo
-      </button>
-      <button type="button" :class="{ 'is-active': editorRef.isActive({ textAlign: 'left' }) }" @click="editorRef.chain().focus().setTextAlign('left').run()">
+      </AButton>
+      <AButton
+
+        :class="{ 'is-active': editorRef.isActive({ textAlign: 'left' }) }"
+        @click="editorRef.chain().focus().setTextAlign('left').run()"
+      >
         left
-      </button>
-      <button type="button" :class="{ 'is-active': editorRef.isActive({ textAlign: 'center' }) }" @click="editorRef.chain().focus().setTextAlign('center').run()">
+      </AButton>
+      <AButton
+
+        :class="{ 'is-active': editorRef.isActive({ textAlign: 'center' }) }"
+        @click="editorRef.chain().focus().setTextAlign('center').run()"
+      >
         center
-      </button>
-      <button type="button" :class="{ 'is-active': editorRef.isActive({ textAlign: 'right' }) }" @click="editorRef.chain().focus().setTextAlign('right').run()">
+      </AButton>
+      <AButton
+
+        :class="{ 'is-active': editorRef.isActive({ textAlign: 'right' }) }"
+        @click="editorRef.chain().focus().setTextAlign('right').run()"
+      >
         right
-      </button>
-      <button type="button" :class="{ 'is-active': editorRef.isActive('link') }" @click="setLink">
+      </AButton>
+      <AButton
+
+        :class="{ 'is-active': editorRef.isActive('link') }"
+        @click="setLink"
+      >
         setLink
-      </button>
-      <button type="button" @click="addImage">
+      </AButton>
+      <AButton
+
+        @click="addImage"
+      >
         addImage
-      </button>
+      </AButton>
     </div>
   </div>
-  <EditorContent class="min-h-48" :editor="editorRef" />
+  <EditorContent
+    class="min-h-48"
+    :editor="editorRef"
+  />
   <div>
-    <p>HTML as string</p>
+    <h2 class="text-4xl">
+      HTML as string
+    </h2>
     <pre>{{ editorRef?.getHTML() }}</pre>
   </div>
-  <p>rendered html (same as editor basically)</p>
-  <div v-html="editorRef?.getHTML()" />
+  <div class="mt-10 flex items-center justify-center">
+    <h2 class="text-4xl ">
+      Rendered html (same as editor more or less)
+    </h2>
+  </div>
+  <div
+    class="prose dark:prose-invert prose-sm sm:prose-base lg:prose-lg xl:prose-2xl focus:outline-none w-full max-w-98dvw border-2 border-slate-900 rounded-md m-5"
+    style="width: 100%;"
+    v-html="editorRef?.getHTML()"
+  />
 </template>
