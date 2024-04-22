@@ -27,6 +27,18 @@ import Tiptap from "@/components/tiptap.vue";
         alt="netflix"
       >
     </div>
+    <div>
+      <img
+        src="https://cm-email-assets.s3.amazonaws.com/images/ContactMonkey-Team-0jzpu9Pu6TfBQ6VbqOEBEsBwtvhSASW0viyWVpCTNDXGuUMh46dICmM79Au84ZGWAEVvFDxVJv3BSNbFIPphPhmzwGteNyESe1AbBPXxHxM7Z9fdhAe2iDWIdrm6qv5b/IMG_1352.jpg"
+        alt="contact monkey"
+      >
+    </div>
+    <div>
+      <img
+        src="https://content.contactmonkey.com/_ipx/_/images/background.webp"
+        alt="netlify"
+      >
+    </div>
   </div>
 </template>
 
